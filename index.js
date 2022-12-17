@@ -6,6 +6,9 @@ import { initializeApp } from 'firebase/app';
 // Add the Firebase products and methods that you want to use
 import {} from 'firebase/auth';
 import {} from 'firebase/firestore';
+import { getAuth, EmailAuthProvider } from 'firebase/auth';
+
+import {} from 'firebase/firestore'
 
 import * as firebaseui from 'firebaseui';
 
@@ -27,9 +30,23 @@ let db, auth;
 
 async function main() {
   // Add Firebase project configuration object here
-  const firebaseConfig = {};
+  const firebaseConfig = {
+    apiKey: "AIzaSyBYfZiy6Et4OBfB6Ofw4_NLTAZ2WsScfEw",
+    authDomain: "fir-web-codelab-e3308.firebaseapp.com",
+    projectId: "fir-web-codelab-e3308",
+    storageBucket: "fir-web-codelab-e3308.appspot.com",
+    messagingSenderId: "292725287504",
+    appId: "1:292725287504:web:6aabcd780b6702017bbf55"
+  };
+  startRsvpButton.addEventListener("click",
+  () => {
+       ui.start("#firebaseui-auth-container", uiConfig);
+ });
 
   // initializeApp(firebaseConfig);
+  initializeApp(firebaseConfig);
+  auth = getAuth();
+  
 
   // FirebaseUI config
   const uiConfig = {
@@ -47,6 +64,6 @@ async function main() {
     },
   };
 
-  // const ui = new firebaseui.auth.AuthUI(auth);
+  const ui = new firebaseui.auth.AuthUI(auth);
 }
 main();
